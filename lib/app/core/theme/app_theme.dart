@@ -10,6 +10,7 @@ class AppTheme {
       primary: AppColors.whiteColor,
       onPrimary: AppColors.blackColor,
       onPrimaryFixed: AppColors.lessOpacityDarkText,
+      surfaceContainerLow: AppColors.grayColor,
     );
     return ThemeData(
       brightness: Brightness.light,

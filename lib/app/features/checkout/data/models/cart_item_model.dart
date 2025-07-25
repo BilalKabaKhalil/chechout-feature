@@ -1,4 +1,3 @@
-
 List<CartItemModel> cartItemsListFromMap(List<dynamic> list) => list
     .map(
       (element) => CartItemModel.fromMap(

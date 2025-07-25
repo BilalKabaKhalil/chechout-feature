@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 
-import '../../../../data/cart_item_model.dart';
+import '../../../../domain/entities/product.dart';
 import 'cart_item_info.dart';
 
 class CartItems extends StatelessWidget {
-  final List<CartItemModel> cartItemsList;
-  const CartItems({super.key, required this.cartItemsList});
+  final List<Product> products;
+  const CartItems({super.key, required this.products});
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
       itemBuilder:
           (context, index) => CartItemInfo(
-            id: cartItemsList[index].id,
-            title: cartItemsList[index].title,
-            price: cartItemsList[index].price,
+            key: ValueKey<String>(products[index].id),
+            title: products[index].title,
+            price: products[index].price,
           ),
-      itemCount: cartItemsList.length,
+      itemCount: products.length,
     );
   }
 }

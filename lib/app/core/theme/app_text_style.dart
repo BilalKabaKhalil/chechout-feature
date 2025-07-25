@@ -23,6 +23,14 @@ class AppTextStyle {
     height: 0,
   );
 
+  TextStyle get font22W500 => TextStyle(
+    color: context.colors.onPrimary,
+    fontSize: 22,
+    fontFamily: 'Inter',
+    fontWeight: FontWeight.w500,
+    height: 0,
+  );
+
   TextStyle get font20LessConstraintW400 => TextStyle(
     color: context.colors.onPrimaryFixed,
     fontSize: 20,
