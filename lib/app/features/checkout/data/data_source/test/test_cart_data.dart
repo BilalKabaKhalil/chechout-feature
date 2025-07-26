@@ -1,4 +1,4 @@
-import 'cart_data.dart';
+import '../cart_data.dart';
 
 class TestCartData extends CartData {
   static const List<Map<String, dynamic>> cartItemsList = [

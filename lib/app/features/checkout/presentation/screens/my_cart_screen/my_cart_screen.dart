@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../../../../core/constants/image_assets.dart';
 import '../../../../../extension/theme_extension.dart';
-import '../../../data/data_source/test_cart_data.dart';
+import '../../../data/data_source/test/test_cart_data.dart';
 import '../../../data/repositories/cart_repository_imp.dart';
+import '../../../data/repositories/payment_method_repository_imp.dart';
 import '../../../domain/usecases/get_cart_data_usecase.dart';
+import '../../../domain/usecases/get_payment_methods_list_usecase.dart';
 import '../../cubits/cart_cubit/cart_cubit.dart';
+import '../../widgets/custom_app_bar.dart';
+import '../payment_details/payment_details.dart';
 import 'widgets/cart_items.dart';
 import 'widgets/custom_button.dart';
 import 'widgets/total_price.dart';
@@ -17,15 +21,7 @@ class MyCartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        leading: Center(child: SvgPicture.asset('')),
-        title: Text(
-          'My Cart',
-          textAlign: TextAlign.center,
-          style: context.textStyle.font25W500,
-        ),
-      ),
+      appBar: const CustomAppBar(title: 'My Cart'),
       body: BlocProvider(
         create:
             (context) =>
@@ -36,7 +32,7 @@ class MyCartScreen extends StatelessWidget {
           child: Column(
             children: <Widget>[
               const SizedBox(height: 8),
-              Expanded(child: Image.asset('')),
+              Expanded(child: Image.asset(ImageAssets.cartImage)),
               const SizedBox(height: 16),
               BlocBuilder<CartCubit, CartState>(
                 builder: (context, state) {
@@ -62,7 +58,23 @@ class MyCartScreen extends StatelessWidget {
                 },
               ),
               const SizedBox(height: 16),
-              CustomButton(title: 'Complete Payment', onPressed: () {}),
+              CustomButton(
+                title: 'Complete Payment',
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder:
+                          (context) => PaymentDetails(
+                            getPaymentMethodsListUsecase:
+                                GetPaymentMethodsListUsecase(
+                                  paymentMethodRepository:
+                                      PaymentMethodRepositoryImp(),
+                                ),
+                          ),
+                    ),
+                  );
+                },
+              ),
               const SizedBox(height: 12),
             ],
           ),
