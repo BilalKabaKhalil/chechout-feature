@@ -5,9 +5,9 @@ import '../../widgets/custom_app_bar.dart';
 import 'widgets/custom_credit_card.dart';
 import 'widgets/payment_method_items.dart';
 
-class PaymentDetails extends StatelessWidget {
+class PaymentDetailsScreen extends StatelessWidget {
   final GetPaymentMethodsListUsecase getPaymentMethodsListUsecase;
-  const PaymentDetails({super.key, required this.getPaymentMethodsListUsecase});
+  const PaymentDetailsScreen({super.key, required this.getPaymentMethodsListUsecase});
 
   @override
   Widget build(BuildContext context) {

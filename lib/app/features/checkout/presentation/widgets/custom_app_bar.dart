@@ -6,7 +6,7 @@ import '../../../../extension/theme_extension.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
-  const CustomAppBar({super.key, required this.title});
+  const CustomAppBar({super.key, this.title = ''});
 
   @override
   Widget build(BuildContext context) {

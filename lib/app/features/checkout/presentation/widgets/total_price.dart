@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../../extension/theme_extension.dart';
+import '../../../../extension/theme_extension.dart';
 
 class TotalPrice extends StatelessWidget {
   final double totalPrice;

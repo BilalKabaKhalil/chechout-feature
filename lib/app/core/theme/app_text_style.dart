@@ -54,4 +54,12 @@ class AppTextStyle {
     fontWeight: FontWeight.w600,
     height: 0,
   );
+
+  TextStyle get font16W400 => TextStyle(
+    color: context.colors.onPrimary,
+    fontSize: 16,
+    fontFamily: 'Inter',
+    fontWeight: FontWeight.w400,
+    height: 0,
+  );
 }
