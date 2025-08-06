@@ -17,7 +17,9 @@ class TotalPrice extends StatelessWidget {
         ),
         const Spacer(),
         ConstrainedBox(
-          constraints: BoxConstraints(maxWidth: MediaQuery.sizeOf(context).width / 2),
+          constraints: BoxConstraints(
+            maxWidth: MediaQuery.sizeOf(context).width / 2,
+          ),
           child: FittedBox(
             fit: BoxFit.scaleDown,
             child: Text(

@@ -7,7 +7,10 @@ import 'widgets/payment_method_items.dart';
 
 class PaymentDetailsScreen extends StatelessWidget {
   final GetPaymentMethodsListUsecase getPaymentMethodsListUsecase;
-  const PaymentDetailsScreen({super.key, required this.getPaymentMethodsListUsecase});
+  const PaymentDetailsScreen({
+    super.key,
+    required this.getPaymentMethodsListUsecase,
+  });
 
   @override
   Widget build(BuildContext context) {

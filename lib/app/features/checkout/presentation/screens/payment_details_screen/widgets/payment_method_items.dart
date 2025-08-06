@@ -22,31 +22,30 @@ class _PaymentMethodItemsState extends State<PaymentMethodItems> {
         child: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
-            children:
-                widget.paymentMethodsList
-                    .asMap()
-                    .entries
-                    .map(
-                      (paymentMethod) => Padding(
-                        padding:
-                            paymentMethod.key ==
-                                    widget.paymentMethodsList.length - 1
-                                ? EdgeInsets.zero
-                                : const EdgeInsets.only(right: 20.0),
-                        child: GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              activeIndex = paymentMethod.key;
-                            });
-                          },
-                          child: PaymentMethodItem(
-                            imagePath: paymentMethod.value.imagePath,
-                            isActive: activeIndex == paymentMethod.key,
-                          ),
-                        ),
+            children: widget.paymentMethodsList
+                .asMap()
+                .entries
+                .map(
+                  (paymentMethod) => Padding(
+                    padding:
+                        paymentMethod.key ==
+                            widget.paymentMethodsList.length - 1
+                        ? EdgeInsets.zero
+                        : const EdgeInsets.only(right: 20.0),
+                    child: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          activeIndex = paymentMethod.key;
+                        });
+                      },
+                      child: PaymentMethodItem(
+                        imagePath: paymentMethod.value.imagePath,
+                        isActive: activeIndex == paymentMethod.key,
                       ),
-                    )
-                    .toList(),
+                    ),
+                  ),
+                )
+                .toList(),
           ),
         ),
       ),

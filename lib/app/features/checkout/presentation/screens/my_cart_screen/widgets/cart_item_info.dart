@@ -14,7 +14,7 @@ class CartItemInfo extends StatelessWidget {
       children: <Widget>[
         ConstrainedBox(
           constraints: BoxConstraints(
-            maxWidth: widthWithoutHorizontalPadding / 3 * 2 ,
+            maxWidth: widthWithoutHorizontalPadding / 3 * 2,
           ),
           child: Text(
             title,

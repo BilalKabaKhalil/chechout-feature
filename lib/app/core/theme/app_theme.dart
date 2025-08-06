@@ -12,9 +12,6 @@ class AppTheme {
       onPrimaryFixed: AppColors.lessOpacityDarkText,
       surfaceContainerLow: AppColors.grayColor,
     );
-    return ThemeData(
-      brightness: Brightness.light,
-      colorScheme: colorScheme,
-    );
+    return ThemeData(brightness: Brightness.light, colorScheme: colorScheme);
   }
 }

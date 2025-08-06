@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../../../core/theme/app_colors.dart';
 
 class CustomDashedLine extends StatelessWidget {
-  const CustomDashedLine({
-    super.key,
-  });
+  const CustomDashedLine({super.key});
 
   @override
   Widget build(BuildContext context) {

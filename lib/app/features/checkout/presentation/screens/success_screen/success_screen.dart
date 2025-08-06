@@ -31,7 +31,9 @@ class SuccessScreen extends StatelessWidget {
               child: const CircleAvatar(backgroundColor: AppColors.whiteColor),
             ),
             Positioned(
-              bottom: height * 0.2 + 20, // 20 is radius of circle to center line with circle
+              bottom:
+                  height * 0.2 +
+                  20, // 20 is radius of circle to center line with circle
               right: 20 + 8,
               left: 20 + 8,
               child: const CustomDashedLine(),

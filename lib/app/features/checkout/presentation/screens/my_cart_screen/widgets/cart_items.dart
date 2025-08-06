@@ -10,12 +10,11 @@ class CartItems extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemBuilder:
-          (context, index) => CartItemInfo(
-            key: ValueKey<String>(products[index].id),
-            title: products[index].title,
-            price: products[index].price,
-          ),
+      itemBuilder: (context, index) => CartItemInfo(
+        key: ValueKey<String>(products[index].id),
+        title: products[index].title,
+        price: products[index].price,
+      ),
       itemCount: products.length,
     );
   }

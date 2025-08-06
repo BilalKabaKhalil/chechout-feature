@@ -24,10 +24,9 @@ class MyCartScreen extends StatelessWidget {
     return Scaffold(
       appBar: const CustomAppBar(title: 'My Cart'),
       body: BlocProvider(
-        create:
-            (context) =>
-                CartCubit(GetCartDataUseCase(CartRepositoryImp(TestCartData())))
-                  ..getCartData(),
+        create: (context) =>
+            CartCubit(GetCartDataUseCase(CartRepositoryImp(TestCartData())))
+              ..getCartData(),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: Column(
@@ -105,10 +104,9 @@ class PaymentMethodBottomSheet extends StatelessWidget {
         children: <Widget>[
           const SizedBox(height: 16),
           PaymentMethodItems(
-            paymentMethodsList:
-                GetPaymentMethodsListUsecase(
-                  paymentMethodRepository: PaymentMethodRepositoryImp(),
-                ).getPaymentMethodsList,
+            paymentMethodsList: GetPaymentMethodsListUsecase(
+              PaymentMethodRepositoryImp(),
+            ).getPaymentMethodsList,
           ),
           const SizedBox(height: 32.0),
           CustomButton(title: 'Continue', onPressed: () {}),

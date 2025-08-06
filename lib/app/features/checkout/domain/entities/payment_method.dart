@@ -1,6 +1,4 @@
 class PaymentMethod {
   final String imagePath;
-  PaymentMethod({
-    required this.imagePath,
-  });
+  PaymentMethod({required this.imagePath});
 }

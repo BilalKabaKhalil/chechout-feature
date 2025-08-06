@@ -5,9 +5,7 @@ import '../../../../../../core/constants/image_assets.dart';
 import '../../../../../../core/theme/app_colors.dart';
 
 class CustomCheckMarkCircle extends StatelessWidget {
-  const CustomCheckMarkCircle({
-    super.key,
-  });
+  const CustomCheckMarkCircle({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,9 +15,7 @@ class CustomCheckMarkCircle extends StatelessWidget {
       child: CircleAvatar(
         radius: 40,
         backgroundColor: AppColors.greenColor,
-        child: Center(
-          child: SvgPicture.asset(ImageAssets.chickMarkSVG,),
-        ),
+        child: Center(child: SvgPicture.asset(ImageAssets.chickMarkSVG)),
       ),
     );
   }

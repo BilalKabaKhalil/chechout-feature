@@ -1,10 +1,5 @@
-List<CartItemModel> cartItemsListFromMap(List<dynamic> list) => list
-    .map(
-      (element) => CartItemModel.fromMap(
-        element,
-      ),
-    )
-    .toList();
+List<CartItemModel> cartItemsListFromMap(List<dynamic> list) =>
+    list.map((element) => CartItemModel.fromMap(element)).toList();
 
 class CartItemModel {
   final String id;
