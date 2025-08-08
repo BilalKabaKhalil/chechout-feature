@@ -1,8 +1,9 @@
-import 'package:checkout/app/core/constants/image_assets.dart';
-import 'package:checkout/app/core/theme/app_colors.dart';
-import 'package:checkout/app/extension/theme_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+
+import '../../../../../../core/constants/image_assets.dart';
+import '../../../../../../core/theme/app_colors.dart';
+import '../../../../../../extension/theme_extension.dart';
 
 class CardInfoWidget extends StatelessWidget {
   const CardInfoWidget({super.key});

@@ -1,20 +1,17 @@
-import 'package:checkout/app/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../../locator.dart';
 import '../../../../../core/constants/image_assets.dart';
+import '../../../../../core/theme/app_colors.dart';
 import '../../../../../extension/theme_extension.dart';
-import '../../../data/data_source/test/test_cart_data.dart';
-import '../../../data/repositories/cart_repository_imp.dart';
-import '../../../data/repositories/payment_method_repository_imp.dart';
-import '../../../domain/usecases/get_cart_data_usecase.dart';
-import '../../../domain/usecases/get_payment_methods_list_usecase.dart';
 import '../../cubits/cart_cubit/cart_cubit.dart';
+import '../../cubits/payment_cubit/payment_cubit.dart';
 import '../../widgets/custom_app_bar.dart';
 import '../../widgets/total_price.dart';
-import '../payment_details_screen/widgets/payment_method_items.dart';
 import 'widgets/cart_items.dart';
 import 'widgets/custom_button.dart';
+import 'widgets/payment_method_bottom_sheet.dart';
 
 class MyCartScreen extends StatelessWidget {
   const MyCartScreen({super.key});
@@ -24,9 +21,7 @@ class MyCartScreen extends StatelessWidget {
     return Scaffold(
       appBar: const CustomAppBar(title: 'My Cart'),
       body: BlocProvider(
-        create: (context) =>
-            CartCubit(GetCartDataUseCase(CartRepositoryImp(TestCartData())))
-              ..getCartData(),
+        create: (context) => getIt<CartCubit>()..getCartData(),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: Column(
@@ -67,7 +62,10 @@ class MyCartScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(16),
                     ),
                     backgroundColor: AppColors.whiteColor,
-                    builder: (_) => const PaymentMethodBottomSheet(),
+                    builder: (_) => BlocProvider(
+                      create: (context) => getIt<PaymentCubit>(),
+                      child: const PaymentMethodBottomSheet(),
+                    ),
                   );
                   /* Navigator.of(context).push(
                     MaterialPageRoute(
@@ -87,30 +85,6 @@ class MyCartScreen extends StatelessWidget {
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class PaymentMethodBottomSheet extends StatelessWidget {
-  const PaymentMethodBottomSheet({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          const SizedBox(height: 16),
-          PaymentMethodItems(
-            paymentMethodsList: GetPaymentMethodsListUsecase(
-              PaymentMethodRepositoryImp(),
-            ).getPaymentMethodsList,
-          ),
-          const SizedBox(height: 32.0),
-          CustomButton(title: 'Continue', onPressed: () {}),
-        ],
       ),
     );
   }

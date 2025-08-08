@@ -1,5 +1,6 @@
-import 'package:checkout/app/extension/theme_extension.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../../../extension/theme_extension.dart';
 
 class PaymentItemInfo extends StatelessWidget {
   final String title, value;

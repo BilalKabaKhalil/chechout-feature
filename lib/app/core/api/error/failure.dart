@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 
 abstract class Failure implements Exception {
   final String message;
@@ -8,6 +9,27 @@ abstract class Failure implements Exception {
 
 class PaymentFailure extends Failure {
   PaymentFailure(super.message);
+}
+
+class StripeFailure extends Failure {
+  StripeFailure(super.message);
+
+  factory StripeFailure.fromResponse(StripeException e) {
+    switch (e.error.code) {
+      case FailureCode.Canceled:
+        return CanceledFailure();
+      case FailureCode.Failed:
+        return StripeFailure(e.error.message ?? 'There Was An Error');
+      case FailureCode.Timeout:
+        return StripeFailure('Timeout With Stripe Request');
+      case FailureCode.Unknown:
+        return StripeFailure('There Was An Error, Please Try Again');
+    }
+  }
+}
+
+class CanceledFailure extends StripeFailure {
+  CanceledFailure() : super('Request Was Canceled');
 }
 
 class ServerFailure extends Failure {
@@ -24,7 +46,7 @@ class ServerFailure extends Failure {
       case DioExceptionType.badCertificate:
         return ServerFailure('Bad Certificate With ApiServer');
       case DioExceptionType.cancel:
-        return ServerFailure('request to ApiServer Was Canceled');
+        return ServerFailure('Request To ApiServer Was Canceled');
       case DioExceptionType.connectionError:
         return ServerFailure('No Internet Connection');
       case DioExceptionType.unknown:
@@ -39,7 +61,7 @@ class ServerFailure extends Failure {
       case 400:
       case 401:
       case 403:
-        return ServerFailure(response.data['apiKey']);
+        return ServerFailure(response.data['error']['message']);
       case 404: //not found
         return ServerFailure(
           'Your Request Was Not Found, Please Try Again Later',

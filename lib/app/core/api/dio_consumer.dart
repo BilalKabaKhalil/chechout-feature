@@ -20,12 +20,12 @@ class DioConsumer extends ApiConsumer {
     bool isFromData = false,
   }) async {
     try {
-      final response = dio.delete(
+      final response = await dio.delete(
         path,
         data: data,
         queryParameters: queryParameters,
       );
-      return response;
+      return response.data;
     } on DioException catch (e) {
       throw ServerFailure.fromDioError(e);
     }
@@ -38,12 +38,12 @@ class DioConsumer extends ApiConsumer {
     Map<String, dynamic>? queryParameters,
   }) async {
     try {
-      final response = dio.get(
+      final response = await dio.get(
         path,
         data: data,
         queryParameters: queryParameters,
       );
-      return response;
+      return response.data;
     } on DioException catch (e) {
       throw ServerFailure.fromDioError(e);
     }
@@ -59,13 +59,13 @@ class DioConsumer extends ApiConsumer {
     Map<String, dynamic>? headers,
   }) async {
     try {
-      final response = dio.post(
+      final response = await dio.post(
         path,
         data: data,
         queryParameters: queryParameters,
         options: Options(contentType: contentType, headers: headers),
       );
-      return response;
+      return response.data;
     } on DioException catch (e) {
       throw ServerFailure.fromDioError(e);
     }
@@ -79,12 +79,12 @@ class DioConsumer extends ApiConsumer {
     bool isFromData = false,
   }) async {
     try {
-      final response = dio.put(
+      final response = await dio.put(
         path,
         data: data,
         queryParameters: queryParameters,
       );
-      return response;
+      return response.data;
     } on DioException catch (e) {
       throw ServerFailure.fromDioError(e);
     }
